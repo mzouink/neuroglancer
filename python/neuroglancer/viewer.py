@@ -44,6 +44,11 @@ class Viewer(viewer_base.ViewerBase, _ViewerHelper):
 
     def get_viewer_url(self):
         return '%s/v/%s/' % (server.get_server_url(), self.token)
+    
+    def show(self, width=500, height=500):
+        from IPython.display import IFrame
+        frame = IFrame(self.get_viewer_url(),width=width,height=height)
+        return frame
 
 
 class UnsynchronizedViewer(viewer_base.UnsynchronizedViewerBase, _ViewerHelper):
